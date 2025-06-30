@@ -62,7 +62,6 @@ This project is a complete Python rewrite that modernizes the C++/PowerShell ins
 
 ## Acknowledgements
 
-This project stands on the shoulders of others. Full credit for the original C++/PowerShell installer goes to **a-One-Fan**. This Python version was directly inspired by the fork and modifications maintained by **aequanima**. Thank you both for your contributions to the community.
+This project stands on the shoulders of others. Full credit for the original C++/PowerShell installer goes to **a-One-Fan**. 
 
-- **Original Creator:** [**a-One-Fan/ComfyUI-Intel-Installer-Script**](https://github.com/a-One-Fan/ComfyUI-Intel-Installer-Script)
-- **Inspiration for this Fork:** [**aequanima/ComfyUI-Intel-Installer-Script-UI**](https://github.com/aequanima/ComfyUI-Intel-Installer-Script-UI)
+- **Original Creator:** [**a-One-Fan/ComfyUI-Intel-Installer-Script**](https://github.com/a-One-Fan/ComfyUI-Intel-Installer-Script
