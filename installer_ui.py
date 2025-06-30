@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from tkinter import messagebox
 import queue
+import os
 from installer_logic import InstallerLogic
 
 # --- CustomTkinter Settings ---
@@ -12,10 +13,17 @@ class App(ctk.CTk):
         super().__init__()
         self.title("ComfyUI Intel Installer")
         self.geometry("800x650")
-        try:
-            self.iconbitmap("assets/icon.ico")
-        except Exception:
-            print("Could not load icon.ico. Make sure it's in the 'assets' folder.")
+        
+        # This will now check for the icon without crashing if the folder is missing
+        icon_path = "assets/icon.ico"
+        if os.path.exists(icon_path):
+            try:
+                self.iconbitmap(icon_path)
+            except Exception as e:
+                print(f"Could not load icon: {e}")
+        else:
+            print("Could not find icon.ico. To add one, create an 'assets' folder with the icon inside.")
+
 
         self.status_queue = queue.Queue()
         self.logic = InstallerLogic(status_queue=self.status_queue)
@@ -38,8 +46,9 @@ class App(ctk.CTk):
         self.gpu_label.pack(anchor="w", padx=10, pady=5)
         self.git_label = ctk.CTkLabel(top_frame, text="Git: Checking...")
         self.git_label.pack(anchor="w", padx=10)
+        # --- THIS IS THE CORRECTED LINE ---
         self.conda_label = ctk.CTkLabel(top_frame, text="Conda: Checking...")
-        self.conda_label.pack(anchor="w", padx=10, pb=5)
+        self.conda_label.pack(anchor="w", padx=10, pady=(0, 5))
 
         # Main tab view
         self.tab_view = ctk.CTkTabview(self, anchor="w")
