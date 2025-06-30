@@ -1,4 +1,4 @@
-# ComfyUI Intel Installer (Python GUI Fork)
+# WIP Don't Use ComfyUI Intel Installer (Python GUI Fork)
 
 This is a user-friendly, pure Python installer for setting up ComfyUI to run on Intel GPUs (Arc and Integrated) using IPEX. It provides a modern, graphical interface built with the **CustomTkinter** library.
 
