@@ -1,0 +1,60 @@
+{
+    "project_version": "1.0.0-python",
+    "comfyui_repo": "https://github.com/comfyanonymous/ComfyUI",
+    "ipex_hijack_repo": "https://github.com/Disty0/ipex_to_cuda",
+    "base_folder_name": "Comfy_Intel",
+    "env_name": "cenv",
+
+    "pip_packages": {
+        "common": [
+            "numpy==1.26.4",
+            "onnxruntime-openvino"
+        ],
+        "windows_dgpu": [
+            "torch==2.3.1+cxx11.abi", "torchvision==0.18.1+cxx11.abi", "torchaudio==2.3.1+cxx11.abi", "intel-extension-for-pytorch==2.3.110+xpu",
+            "--extra-index-url", "https://pytorch-extension.intel.com/release-whl/stable/xpu/us/",
+            "dpcpp-cpp-rt==2024.2.1", "mkl-dpcpp==2024.2.1", "onednn==2024.2.1"
+        ],
+        "windows_igpu": [
+            "torch==2.3.1+cxx11.abi", "torchvision==0.18.1+cxx11.abi", "torchaudio==2.3.1+cxx11.abi", "intel-extension-for-pytorch==2.3.110+xpu",
+            "--extra-index-url", "https://pytorch-extension.intel.com/release-whl/stable/mtl/us/",
+            "dpcpp-cpp-rt==2024.2.1", "mkl-dpcpp==2024.2.1", "onednn==2024.2.1"
+        ],
+        "linux": [
+            "torch==2.3.1+cxx11.abi", "torchvision==0.18.1+cxx11.abi", "torchaudio==2.3.1+cxx11.abi", "intel-extension-for-pytorch==2.3.110+xpu", "oneccl_bind_pt==2.3.100+xpu",
+            "--extra-index-url", "https://pytorch-extension.intel.com/release-whl/stable/xpu/us/"
+        ]
+    },
+
+    "custom_nodes": [
+        { "name": "GGUF Support", "url": "https://github.com/city96/ComfyUI-GGUF" },
+        { "name": "SUPIR Upscaling", "url": "https://github.com/kijai/ComfyUI-SUPIR" },
+        { "name": "Extra Models (PixArt)", "url": "https://github.com/city96/ComfyUI_ExtraModels" }
+    ],
+
+    "model_collections": [
+        {
+            "name": "Flux.1 Dev (4-bit, 12GB total)",
+            "license": "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md",
+            "files": [
+                { "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors", "dest": "vae" },
+                { "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors", "dest": "clip" },
+                { "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors", "dest": "clip" },
+                { "url": "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q4_0.gguf", "dest": "unet" }
+            ]
+        },
+        {
+            "name": "SDXL 1.0 Base (6.9GB)",
+            "files": [
+                { "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors", "dest": "checkpoints" }
+            ]
+        },
+        {
+            "name": "Brushnet Models (SD1.5, GDrive)",
+            "files": [
+                { "url": "https://drive.google.com/uc?id=1uLQ55rdcFljdP_9iYGX5ZmJWzXFJast7", "dest": "inpaint/brushnet", "filename": "segmentation_mask.safetensors" },
+                { "url": "https://drive.google.com/uc?id=1h_WOUK1SyV_YwoXAT7rRO012dI5sm3OE", "dest": "inpaint/brushnet", "filename": "random_mask.safetensors" }
+            ]
+        }
+    ]
+}
